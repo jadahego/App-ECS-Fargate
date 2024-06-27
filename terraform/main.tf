@@ -5,7 +5,7 @@ resource "aws_ecs_cluster" "my_ecs_cluster_jdhg" {
 }
 
 data "template_file" "cb_app" {
-    template = file("./terraform/ecs/task_definition.tpl")
+    template = file("./ecs/task_definition.tpl")
 
     vars = {
         app_image      = var.app_image
