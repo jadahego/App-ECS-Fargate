@@ -46,7 +46,7 @@ resource "aws_eip" "gw-jdhg" {
 
 resource "aws_nat_gateway" "gw-jdhg" {
     count         = var.az_count
-    subnet_id     = element(aws_subnet.public.*.id, count.index)
+    subnet_id     = element(aws_subnet.public-jdhg-west-b.*.id, count.index)
     allocation_id = element(aws_eip.gw-jdhg.*.id, count.index)
 }
 

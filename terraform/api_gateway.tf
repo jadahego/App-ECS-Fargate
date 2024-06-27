@@ -1,3 +1,6 @@
+# apigateway.tf
+
+# Recursos de API Gateway
 resource "aws_api_gateway_rest_api" "voting_api" {
   name        = "Voting API"
   description = "API for the Voting application"
@@ -28,8 +31,8 @@ resource "aws_api_gateway_integration" "vote_post" {
   resource_id             = aws_api_gateway_resource.vote.id
   http_method             = aws_api_gateway_method.vote_post.http_method
   integration_http_method = "POST"
-  type                    = "AWS_PROXY"
-  uri                     = aws_lambda_function.voting_function_jdhg.invoke_arn
+  type                    = "HTTP_PROXY"
+  uri                     = aws_ecs_service.voting_service.endpoint
 }
 
 resource "aws_api_gateway_integration" "vote_get" {
@@ -37,8 +40,8 @@ resource "aws_api_gateway_integration" "vote_get" {
   resource_id             = aws_api_gateway_resource.vote.id
   http_method             = aws_api_gateway_method.vote_get.http_method
   integration_http_method = "GET"
-  type                    = "AWS_PROXY"
-  uri                     = aws_lambda_function.voting_function_jdhg.invoke_arn
+  type                    = "HTTP_PROXY"
+  uri                     = aws_ecs_service.voting_service.endpoint
 }
 
 resource "aws_api_gateway_deployment" "voting_api_deployment" {
@@ -49,5 +52,4 @@ resource "aws_api_gateway_deployment" "voting_api_deployment" {
   rest_api_id = aws_api_gateway_rest_api.voting_api.id
   stage_name  = "v2"
 }
-
 
