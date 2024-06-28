@@ -18,7 +18,7 @@
         "containerPort": ${app_port},
         "hostPort": ${app_port}
       }
-    ],
+    ]
   }
 ]
 
