@@ -28,7 +28,7 @@ resource "aws_alb_target_group" "apppy" {
 resource "aws_alb_listener" "front_end" {
   load_balancer_arn = aws_alb.alb-jdhg.id
   port              = var.app_port
-  protocol          = "HTTPS"
+  protocol          = "HTTP"
 
   default_action {
     target_group_arn = aws_alb_target_group.apppy.id
