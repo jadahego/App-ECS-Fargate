@@ -54,7 +54,7 @@ jobs:
         source ../.venv/bin/activate
         python -m pytest
     
-    - name: Set up QEMU
+        - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
 
     - name: Set up Docker Buildx
@@ -65,7 +65,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}    
+        aws-region: ${{ env.AWS_REGION }}
 
     - name: Log in to Amazon ECR
       id: login-ecr
@@ -77,15 +77,16 @@ jobs:
         cd app
         IMAGE_TAG=latest
         IMAGE_NAME=cb-app
-        REPOSITORY_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-2.amazonaws.com/$IMAGE_NAME
+        REPOSITORY_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/$IMAGE_NAME
 
-        docker build -t $IMAGE_NAME:$IMAGE_TAG .
-        docker tag $IMAGE_NAME:$IMAGE_TAG $REPOSITORY_URI:$IMAGE_TAG
-        docker push $REPOSITORY_URI:$IMAGE_TAG
+        # Utilizar Docker Buildx para build multi-plataforma
+        docker buildx create --use
+        docker buildx build --platform linux/amd64,linux/arm64 -t $IMAGE_NAME:$IMAGE_TAG -t $REPOSITORY_URI:$IMAGE_TAG --push .
 
     - name: Print image URI
       run: |
-        echo "Image URI: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-2.amazonaws.com/cb-app:latest" 
+        echo "Image URI: $REPOSITORY_URI:$IMAGE_TAG"
+
 
 
   deploy:
