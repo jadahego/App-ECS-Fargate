@@ -25,11 +25,6 @@ def vote():
 def results():
     return jsonify(votes), 200
 
-# Ruta de salud para AWS ALB
-@app.route('/health')
-def health_check():
-    # Puedes implementar lógica de verificación de salud aquí si es necesario
-    return jsonify({"status": "healthy"}), 200
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=3000, debug=True)     
