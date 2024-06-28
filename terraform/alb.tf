@@ -16,7 +16,7 @@ resource "aws_alb_target_group" "apppy" {
     health_check {
         healthy_threshold   = "3"
         interval            = "30"
-        protocol            = "HTTPs"
+        protocol            = "HTTPS"
         matcher             = "200"
         timeout             = "3"
         path                = var.health_check_path
