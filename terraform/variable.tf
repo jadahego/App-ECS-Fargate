@@ -39,7 +39,7 @@ variable "health_check_path" {
 
 variable "fargate_cpu" { 
     description = "Unidades de CPU de instancia de Fargate para aprovisionar (1 vCPU = 1024 unidades de CPU)" 
-    default = "256"
+    default = "1024"
 } 
 
 variable "fargate_memory" { 
