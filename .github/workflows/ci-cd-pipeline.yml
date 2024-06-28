@@ -74,18 +74,17 @@ jobs:
     - name: Build and push Docker image
       id: build-image
       run: |
-        cd app
         IMAGE_TAG=latest
         IMAGE_NAME=cb-app
         REPOSITORY_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-2.amazonaws.com/$IMAGE_NAME
 
-        docker build -t $IMAGE_NAME:$IMAGE_TAG .
+        docker build -t $IMAGE_NAME:$IMAGE_TAG ./app
         docker tag $IMAGE_NAME:$IMAGE_TAG $REPOSITORY_URI:$IMAGE_TAG
         docker push $REPOSITORY_URI:$IMAGE_TAG
 
     - name: Print image URI
       run: |
-        echo "Image URI: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-2.amazonaws.com/cb-app:latest"
+        echo "Image URI: $REPOSITORY_URI:$IMAGE_TAG"
 
 
   deploy:
