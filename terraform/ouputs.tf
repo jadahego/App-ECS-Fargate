@@ -1,4 +1,4 @@
 
 output "alb_hostname" {
-  value = "${aws_alb.main.dns_name}:3000"
+  value = "${aws_alb.alb-jdhg.dns_name}:3000"
 }
