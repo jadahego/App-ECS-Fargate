@@ -9,14 +9,14 @@ resource "aws_alb" "alb-jdhg" {
 resource "aws_alb_target_group" "apppy" {
     name        = "cb-target-group"
     port        = 80
-    protocol    = "HTTP"
+    protocol    = "HTTPS"
     vpc_id      = aws_vpc.vpc-jdhg.id
     target_type = "ip"
 
     health_check {
         healthy_threshold   = "3"
         interval            = "30"
-        protocol            = "HTTP"
+        protocol            = "HTTPS"
         matcher             = "200"
         timeout             = "3"
         path                = var.health_check_path
@@ -28,7 +28,7 @@ resource "aws_alb_target_group" "apppy" {
 resource "aws_alb_listener" "front_end" {
   load_balancer_arn = aws_alb.alb-jdhg.id
   port              = var.app_port
-  protocol          = "HTTP"
+  protocol          = "HTTPS"
 
   default_action {
     target_group_arn = aws_alb_target_group.apppy.id
