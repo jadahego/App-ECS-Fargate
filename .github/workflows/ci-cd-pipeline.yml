@@ -85,7 +85,7 @@ jobs:
 
     - name: Print image URI
       run: |
-        echo "Image URI: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-2.amazonaws.com/cb-app:latest"
+        echo "Image URI: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-2.amazonaws.com/cb-app:latest" 
 
 
   deploy:
