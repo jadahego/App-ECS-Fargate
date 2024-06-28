@@ -74,7 +74,7 @@ jobs:
     - name: Build and push Docker image
       id: build-image
       run: |
-        IMAGE_TAG=latest
+        
         IMAGE_NAME=cb-app
         REPOSITORY_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-2.amazonaws.com/$IMAGE_NAME
 
