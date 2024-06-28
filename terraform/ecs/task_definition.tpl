@@ -1,7 +1,7 @@
 [
   {
     "name": "cb-app",
-    "image": "${app_image}",
+    "image": "132972109843.dkr.ecr.us-west-2.amazonaws.com/cb-app",
     "cpu": ${fargate_cpu},
     "memory": ${fargate_memory},
     "essential": true,
