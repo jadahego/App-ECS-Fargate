@@ -4,7 +4,7 @@
     "image": "${app_image}",
     "cpu": ${fargate_cpu},
     "memory": ${fargate_memory},
-    "networkMode": "awsvpc",
+    "essential": true,
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
@@ -21,4 +21,5 @@
     ]
   }
 ]
+
 
