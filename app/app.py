@@ -3,8 +3,6 @@ from flask import Flask
 
 app = Flask(__name__)
 
-# Configurar el logging
-logging.basicConfig(level=logging.INFO)
 
 @app.route('/')
 def home():
