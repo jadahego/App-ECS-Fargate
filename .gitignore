@@ -1,7 +1,17 @@
-# Compiled files
-*.tfstate
-*.tfstate.backup
-.terraform.tfstate.lock.info
-
-# Module directory
 **/.terraform/*
+
+*.tfstate
+*.tfstate.*
+
+crash.logcrash.*.log
+
+*.tfvars
+*.tfvars.json
+
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+.terraformrc
+terraform.rc
