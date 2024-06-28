@@ -32,7 +32,7 @@ resource "aws_api_gateway_integration" "vote_post" {
   http_method             = aws_api_gateway_method.vote_post.http_method
   integration_http_method = "POST"
   type                    = "HTTP_PROXY"
-  uri                     = "http://${aws_alb.alb-jdhg.dns_name}/"
+  uri                     = "http://${aws_alb.alb-jdhg.dns_name}/vote"
 }
 
 resource "aws_api_gateway_integration" "vote_get" {
@@ -41,7 +41,7 @@ resource "aws_api_gateway_integration" "vote_get" {
   http_method             = aws_api_gateway_method.vote_get.http_method
   integration_http_method = "GET"
   type                    = "HTTP_PROXY"
-  uri                     = "http://${aws_alb.alb-jdhg.dns_name}/"
+  uri                     = "http://${aws_alb.alb-jdhg.dns_name}/vote"
 }
 
 resource "aws_api_gateway_deployment" "voting_api_deployment" {
