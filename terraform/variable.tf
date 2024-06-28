@@ -44,5 +44,5 @@ variable "fargate_cpu" {
 
 variable "fargate_memory" { 
     description = "Memoria de instancia de Fargate para aprovisionar (en MiB)" 
-    default = "512"
+    default = "2048"
 }
