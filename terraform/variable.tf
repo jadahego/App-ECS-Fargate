@@ -25,7 +25,7 @@ variable "app_image" {
 
 variable "app_port" { 
     description = "Puerto expuesto por la imagen de la ventana acoplable para redirigir el tráfico a" 
-    default = 80
+    default = 3000
 } 
 
 variable "app_count" { 
