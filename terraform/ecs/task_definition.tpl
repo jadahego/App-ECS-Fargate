@@ -19,7 +19,6 @@
         "hostPort": ${app_port}
       }
     ],
-    "executionRoleArn": "${ecs_task_execution_role_arn}"
   }
 ]
 
