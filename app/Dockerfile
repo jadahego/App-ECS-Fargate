@@ -15,7 +15,7 @@ RUN pip install --upgrade pip && \
 COPY . .
 
 # Exponer el puerto en el que la aplicación correrá
-EXPOSE 5000
+EXPOSE 3000
 
 # Configurar el comando por defecto para ejecutar la aplicación
 CMD ["python", "app.py"]
