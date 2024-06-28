@@ -77,12 +77,10 @@ jobs:
         IMAGE_TAG=latst
         IMAGE_NAME=cb-app
         REPOSITORY_URI=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-west-2.amazonaws.com/$IMAGE_NAME
-
-        cd app
-        docker build -t $IMAGE_NAME:$IMAGE_TAG 
+        
+        docker build -t $IMAGE_NAME:$IMAGE_TAG ./app
         docker tag $IMAGE_NAME:$IMAGE_TAG $REPOSITORY_URI:$IMAGE_TAG
         docker push $REPOSITORY_URI:$IMAGE_TAG
-        
 
     - name: Print image URI
       run: |
