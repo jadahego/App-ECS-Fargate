@@ -1,8 +1,5 @@
-from flask import Flask, request, jsonify
 import logging
-
-
-app = Flask(__name__)
+from flask import Flask, jsonify, request
 
 # Configurar el logging
 logging.basicConfig(level=logging.INFO)
@@ -27,6 +24,12 @@ def vote():
 @app.route('/results', methods=['GET'])
 def results():
     return jsonify(votes), 200
+
+# Ruta de salud para AWS ALB
+@app.route('/health')
+def health_check():
+    # Puedes implementar lógica de verificación de salud aquí si es necesario
+    return jsonify({"status": "healthy"}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)
