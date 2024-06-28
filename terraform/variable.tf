@@ -20,7 +20,7 @@ variable "az_count" {
 
 variable "app_image" { 
     description = "Imagen de Docker para ejecutar en el clúster ECS" 
-    default = "${secrets.AWS_ACCOUNT_ID }.dkr.ecr.us-west-2.amazonaws.com/cb-app"
+    default = "132972109843.dkr.ecr.us-west-2.amazonaws.com/cb-app"
 } 
 
 variable "app_port" { 
