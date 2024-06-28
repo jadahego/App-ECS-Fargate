@@ -1,18 +1,18 @@
 # Usar una imagen base ligera
-FROM python:3.8-slim-buster
+FROM python:3.8-slim
 
 # Establecer el directorio de trabajo
-WORKDIR /app
+WORKDIR ./app
 
 # Copiar y instalar dependencias
-COPY requirements.txt ./
+COPY requirements.txt ./app
 RUN python -m venv venv && \
     . venv/bin/activate && \
     pip install --upgrade pip && \
     pip install -r requirements.txt
 
 # Copiar el resto de la aplicación
-COPY . .
+COPY ./app
 
 # Exponer el puerto en el que la aplicación correrá
 EXPOSE 3000
