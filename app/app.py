@@ -1,4 +1,11 @@
 from flask import Flask, request, jsonify
+import logging
+
+
+app = Flask(__name__)
+
+# Configurar el logging
+logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
 
